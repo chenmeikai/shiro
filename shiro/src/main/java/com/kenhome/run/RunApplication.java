@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @SpringBootApplication(scanBasePackages = {"com.kenhome"})
 @EnableTransactionManagement
 @MapperScan("com.kenhome.mapper")

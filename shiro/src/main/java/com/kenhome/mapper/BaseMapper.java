@@ -68,7 +68,7 @@ public interface BaseMapper<T>  {
 	 * @param id
 	 */
 	int delById(Serializable id);
-	
+
 	/**
 	 * 批量删除
 	 * @param list

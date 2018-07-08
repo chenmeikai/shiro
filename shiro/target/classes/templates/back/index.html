@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
 
-<title>后台任务管理系统</title>
+<title>后台管理系统</title>
 
 <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet"></link>
 <link th:href="@{/font-awesome/css/font-awesome.css}" rel="stylesheet"></link>
@@ -57,7 +57,7 @@
 								<li><a href="/manager/user/logout">退出登录</a></li>
 							</ul>
 						</div>
-						<div class="logo-element">job</div>
+						<div class="logo-element">shiro</div>
 					</li>
 					<li th:class="${status.first} ? 'special_link aclList' : 'aclList'" th:each="childAcl,status:${data['rootAcl'].childAcls}">
 					  <a class="acl-a" href="javascript:;"  th:onclick="${status.first} ? 'index(this,\''+${childAcl.aclUrl}+'\')' : ''"  th:attr="data-url=${childAcl.aclUrl}" >

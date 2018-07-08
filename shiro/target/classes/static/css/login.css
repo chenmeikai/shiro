@@ -1,5 +1,5 @@
 body{
-    background: url("/file/login/one.jpg");
+    background: url("/img/login/login.jpg");
     animation-name:myfirst;
     animation-duration:20s;
     /*变换时间*/
@@ -12,8 +12,8 @@ body{
 }
 @keyframes myfirst
 {
-    0%   {background:url("/file/login/one.jpg");}
-    34%  {background:url("/file/login/two.jpg");}
+    0%   {background:url("/img/login/login.jpg");}
+    35%  {background:url("/img/login/login2.jpg");}
 }
 .form{background: rgba(255,255,255,0.2);width:400px;margin:120px auto;}
 /*阴影*/
