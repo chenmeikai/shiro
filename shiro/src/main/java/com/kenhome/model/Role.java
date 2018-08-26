@@ -36,14 +36,14 @@ public class Role implements Serializable {
      * 是否内置，不可改，默认1：不内置，2：内置
      */
     private Integer system;
-    
-    
+
+
     /**
      * 资源集合
      */
     private List<Acl> acls = new ArrayList<Acl>();
 
-    
+
     private static final long serialVersionUID = 1L;
 
 

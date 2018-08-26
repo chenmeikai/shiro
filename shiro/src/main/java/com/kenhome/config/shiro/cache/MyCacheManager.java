@@ -19,7 +19,7 @@ public class MyCacheManager implements CacheManager {
     private final ConcurrentMap<String, Cache> caches = new ConcurrentHashMap<String, Cache>();
 
     @Autowired
-    private  RedisShiroCache redisShiroCache;
+    private RedisShiroCache redisShiroCache;
 
     @Override
     public <K, V> Cache<K, V> getCache(String s) throws CacheException {

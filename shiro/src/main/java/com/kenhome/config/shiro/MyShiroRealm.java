@@ -53,10 +53,10 @@ public class MyShiroRealm extends AuthorizingRealm {
 
             for (Role role : manager.getRoles()) {
 
-                logger.info("{}拥有的角色是{}",manager.getUserName(),role.getRoleName());
+                logger.info("{}拥有的角色是{}", manager.getUserName(), role.getRoleName());
 
                 for (Acl acl : role.getAcls()) {
-                    logger.info("{}拥有的权限是：{}",manager.getUserName(),acl.getPermission());
+                    logger.info("{}拥有的权限是：{}", manager.getUserName(), acl.getPermission());
                     permissions.add(acl.getPermission());
                 }
             }
@@ -73,7 +73,7 @@ public class MyShiroRealm extends AuthorizingRealm {
 
         String password = new String((char[]) token.getCredentials());
 
-        logger.info("校验的身份是{}",managerName);
+        logger.info("校验的身份是{}", managerName);
 
         /*TODO 缓存用户*/
         User manager = userMapper.getUserByName(managerName);

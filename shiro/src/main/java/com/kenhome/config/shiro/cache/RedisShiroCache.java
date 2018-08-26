@@ -35,14 +35,14 @@ public class RedisShiroCache<K, V> implements Cache<K, V>, Serializable {
     @Override
     public V get(K k) throws CacheException {
         V v = (V) redisTemplate.opsForValue().get(PREFIX + k);
-        log.info("{}从缓存中获取{}",k, JSON.toJSONString(v));
+        log.info("{}从缓存中获取{}", k, JSON.toJSONString(v));
         return v;
     }
 
 
     @Override
     public V put(K k, V v) throws CacheException {
-        log.info("{}存储到缓存",k);
+        log.info("{}存储到缓存", k);
         redisTemplate.opsForValue().set(PREFIX + k, v);
         return v;
     }

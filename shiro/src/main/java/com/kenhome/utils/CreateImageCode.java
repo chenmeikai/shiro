@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package com.kenhome.utils;
 
@@ -15,12 +15,12 @@ import javax.imageio.ImageIO;
 
 /**
  * @author Administrator
- *  验证码图片生成
+ * 验证码图片生成
  */
 
 public class CreateImageCode {
-	
-	// 图片的宽度。
+
+    // 图片的宽度。
     private int width = 160;
     // 图片的高度。
     private int height = 40;
@@ -72,9 +72,8 @@ public class CreateImageCode {
         // 设置背景色
         g.setColor(getRandColor(200, 250));
         g.fillRect(0, 0, width, height);
-        
-        
-        
+
+
         // 设置字体
         //Font font1 = getFont(fontHeight);
         Font font = new Font("Fixedsys", Font.BOLD, fontHeight);
@@ -108,10 +107,10 @@ public class CreateImageCode {
             g.setColor(getRandColor(1, 255));
             // g.drawString(a,x,y);
             // a为要画出来的东西，x和y表示要画的东西最左侧字符的基线位于此图形上下文坐标系的 (x, y) 位置处
-            
-            g.drawString(strRand, i*fontWidth+3, codeY);
+
+            g.drawString(strRand, i * fontWidth + 3, codeY);
         }
-        
+
 
     }
 
@@ -139,7 +138,7 @@ public class CreateImageCode {
         int b = fc + random.nextInt(bc - fc);
         return new Color(r, g, b);
     }
-    
+
     /**
      * 产生随机字体
      */
@@ -153,61 +152,60 @@ public class CreateImageCode {
         font[4] = new Font("Gill Sans Ultra Bold", Font.PLAIN, size);
         return font[random.nextInt(5)];
     }
-    
+
     // 扭曲方法
-        private void shear(Graphics g, int w1, int h1, Color color) {
-            shearX(g, w1, h1, color);
-            shearY(g, w1, h1, color);
+    private void shear(Graphics g, int w1, int h1, Color color) {
+        shearX(g, w1, h1, color);
+        shearY(g, w1, h1, color);
+    }
+
+    private void shearX(Graphics g, int w1, int h1, Color color) {
+
+        int period = random.nextInt(2);
+
+        boolean borderGap = true;
+        int frames = 1;
+        int phase = random.nextInt(2);
+
+        for (int i = 0; i < h1; i++) {
+            double d = (double) (period >> 1)
+                    * Math.sin((double) i / (double) period
+                    + (6.2831853071795862D * (double) phase)
+                    / (double) frames);
+            g.copyArea(0, i, w1, 1, (int) d, 0);
+            if (borderGap) {
+                g.setColor(color);
+                g.drawLine((int) d, i, 0, i);
+                g.drawLine((int) d + w1, i, w1, i);
+            }
         }
 
-        private void shearX(Graphics g, int w1, int h1, Color color) {
+    }
 
-            int period = random.nextInt(2);
+    private void shearY(Graphics g, int w1, int h1, Color color) {
 
-            boolean borderGap = true;
-            int frames = 1;
-            int phase = random.nextInt(2);
+        int period = random.nextInt(40) + 10; // 50;
 
-            for (int i = 0; i < h1; i++) {
-                double d = (double) (period >> 1)
-                        * Math.sin((double) i / (double) period
-                                + (6.2831853071795862D * (double) phase)
-                                / (double) frames);
-                g.copyArea(0, i, w1, 1, (int) d, 0);
-                if (borderGap) {
-                    g.setColor(color);
-                    g.drawLine((int) d, i, 0, i);
-                    g.drawLine((int) d + w1, i, w1, i);
-                }
+        boolean borderGap = true;
+        int frames = 20;
+        int phase = 7;
+        for (int i = 0; i < w1; i++) {
+            double d = (double) (period >> 1)
+                    * Math.sin((double) i / (double) period
+                    + (6.2831853071795862D * (double) phase)
+                    / (double) frames);
+            g.copyArea(i, 0, 1, h1, 0, (int) d);
+            if (borderGap) {
+                g.setColor(color);
+                g.drawLine(i, (int) d, i, 0);
+                g.drawLine(i, (int) d + h1, i, h1);
             }
 
         }
 
-        private void shearY(Graphics g, int w1, int h1, Color color) {
-
-            int period = random.nextInt(40) + 10; // 50;
-
-            boolean borderGap = true;
-            int frames = 20;
-            int phase = 7;
-            for (int i = 0; i < w1; i++) {
-                double d = (double) (period >> 1)
-                        * Math.sin((double) i / (double) period
-                                + (6.2831853071795862D * (double) phase)
-                                / (double) frames);
-                g.copyArea(i, 0, 1, h1, 0, (int) d);
-                if (borderGap) {
-                    g.setColor(color);
-                    g.drawLine(i, (int) d, i, 0);
-                    g.drawLine(i, (int) d + h1, i, h1);
-                }
-
-            }
-
-        }
+    }
 
 
-    
     public void write(OutputStream sos) throws IOException {
         ImageIO.write(buffImg, "png", sos);
         sos.close();
