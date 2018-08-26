@@ -30,7 +30,7 @@ public class IndexController {
 
     @RequestMapping("info")
     public String info(Map<String, Object> map) {
-
+       
         return "back/info";
     }
 
