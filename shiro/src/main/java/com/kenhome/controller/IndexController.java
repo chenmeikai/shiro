@@ -22,7 +22,7 @@ public class IndexController {
 
         Map<String, Object> map = aclService.selectRootAndChildAcl();
 
-        model.addAttribute("data", map);
+        model.addAttribute("data", map); 
 
         return "back/index";
     }
@@ -30,7 +30,7 @@ public class IndexController {
 
     @RequestMapping("info")
     public String info(Map<String, Object> map) {
-       
+
         return "back/info";
     }
 
