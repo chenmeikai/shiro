@@ -22,9 +22,9 @@ public class IndexController {
 
         Map<String, Object> map = aclService.selectRootAndChildAcl();
 
-        model.addAttribute("data", map);     
+        model.addAttribute("data", map);
 
-        return "back/index";
+        return "back/index"; 
     }
 
 
