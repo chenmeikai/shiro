@@ -24,7 +24,7 @@ public class IndexController {
 
         model.addAttribute("data", map);
 
-        return "back/index";      
+        return "back/index";
     }
 
 
